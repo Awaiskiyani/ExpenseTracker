@@ -1,0 +1,63 @@
+﻿@model ExpenseTracker.Models.ViewModel.ExpenseVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" asp-action="Create">
+    
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Add Expense</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="expense.ExpenseName"></label>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="expense.Amount"></label>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="expense.Expensetype"></label>
+                    </div>
+                   
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <input asp-for="expense.ExpenseName" class="form-control" />
+                        <span asp-validation-for="expense.ExpenseName" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="expense.Amount" class="form-control" />
+                        <span asp-validation-for="expense.Amount" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <select asp-for="expense.ExpenseTypeId" asp-items="@Model.TypeDropDown" class="form-control" >
+                            <option selected>--Select Expense Type--</option>
+                            </select>
+                        <span asp-validation-for="expense.ExpenseTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+                </br>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 text-center row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+
